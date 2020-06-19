@@ -40,10 +40,10 @@ jobs:
           at: /tmp/workspace
       - run : |
           pwd 
-          ls - laR ~
+          ls - laR /tmp
           TAG=0.1.$CIRCLE_BUILD_NUM
-          git clone https://github.com/David-VTUK/CircleCI-Webapp-CD
-          cd /CircleCI-Webapp-CD
+          git clone https://github.com/David-VTUK/CircleCI-Webapp-CD /tmp
+          cd /tmp/CircleCI-Webapp-CD
           cp /tmp/workspace/deployment.yaml .
           sed -i 's/\(circleci-webappdemo\)\(.*\)/\1:$TAG/' ./deployment.yaml
           git config credential.helper 'cache --timeout=120'
