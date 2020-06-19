@@ -59,4 +59,7 @@ workflows:
             - Test
       - Publish:
           requires:
-            - Build     
+            - Build
+      - GenerateYAML:
+          requires:
+            - Publish     
