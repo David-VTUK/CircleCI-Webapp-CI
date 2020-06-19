@@ -39,10 +39,10 @@ jobs:
       - attach_workspace:
           at: /tmp/workspace
       - run : |
-          ls -laR .
-          ls -laR /tmp
           TAG=0.1.$CIRCLE_BUILD_NUM
           git clone https://github.com/David-VTUK/CircleCI-Webapp-CD /tmp
+          ls -laR .
+          ls -laR /tmp
           cd /tmp/CircleCI-Webapp-CD
           cp /tmp/workspace/deployment.yaml .
           sed -i 's/\(circleci-webappdemo\)\(.*\)/\1:$TAG/' ./deployment.yaml
