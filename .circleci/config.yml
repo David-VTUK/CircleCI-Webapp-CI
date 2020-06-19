@@ -37,7 +37,7 @@ jobs:
       - image: cimg/base:2020.06
     steps:
       - attach_workspace:
-        at: /tmp/workspace
+          at: /tmp/workspace
       - run : |
             cp /tmp/workspace/deployment.yaml .
             TAG=0.1.$CIRCLE_BUILD_NUM
