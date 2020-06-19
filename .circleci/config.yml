@@ -39,8 +39,8 @@ jobs:
       - attach_workspace:
           at: /tmp/workspace
       - run : |
-          pwd 
-          ls - laR /tmp
+          ls -laR .
+          ls -laR /tmp
           TAG=0.1.$CIRCLE_BUILD_NUM
           git clone https://github.com/David-VTUK/CircleCI-Webapp-CD /tmp
           cd /tmp/CircleCI-Webapp-CD
