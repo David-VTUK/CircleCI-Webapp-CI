@@ -41,8 +41,6 @@ jobs:
       - run : |
           TAG=0.1.$CIRCLE_BUILD_NUM
           git clone https://github.com/David-VTUK/CircleCI-Webapp-CD /tmp/CircleCI-Webapp-CD
-          ls -laR .
-          ls -laR /tmp
           cd /tmp/CircleCI-Webapp-CD
           cp /tmp/workspace/deployment.yaml .
           sed -i 's/\(circleci-webappdemo\)\(.*\)/\1:$TAG/' ./deployment.yaml
