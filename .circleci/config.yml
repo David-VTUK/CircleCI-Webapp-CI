@@ -40,8 +40,9 @@ jobs:
             TAG=0.1.$CIRCLE_BUILD_NUM
             sed -i 's/\(circleci-webappdemo\)\(.*\)/\1:$TAG/' ./deployment.yaml
       - run : |
+          git clone https://github.com/David-VTUK/CircleCI-Webapp-CD
           git config credential.helper 'cache --timeout=120'
-          git config user.email "CircliCI@virtualthoughts.co.uk"
+          git config user.email "CircleCI@virtualthoughts.co.uk"
           git config user.name "CircleCI"
           git add .
           git commit -m "Update via CircleCI"
