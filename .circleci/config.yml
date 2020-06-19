@@ -40,7 +40,7 @@ jobs:
           at: /tmp/workspace
       - run : |
           TAG=0.1.$CIRCLE_BUILD_NUM
-          git clone https://github.com/David-VTUK/CircleCI-Webapp-CD /tmp
+          git clone https://github.com/David-VTUK/CircleCI-Webapp-CD /tmp/CircleCI-Webapp-CD
           ls -laR .
           ls -laR /tmp
           cd /tmp/CircleCI-Webapp-CD
