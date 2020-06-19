@@ -39,11 +39,11 @@ jobs:
       - attach_workspace:
           at: /tmp/workspace
       - run : |
-            cp /tmp/workspace/deployment.yaml .
-            TAG=0.1.$CIRCLE_BUILD_NUM
-            sed -i 's/\(circleci-webappdemo\)\(.*\)/\1:$TAG/' ./deployment.yaml
-      - run : |
+          TAG=0.1.$CIRCLE_BUILD_NUM
           git clone https://github.com/David-VTUK/CircleCI-Webapp-CD
+          cd /CircleCI-Webapp-CD
+          cp /tmp/workspace/deployment.yaml .
+          sed -i 's/\(circleci-webappdemo\)\(.*\)/\1:$TAG/' ./deployment.yaml
           git config credential.helper 'cache --timeout=120'
           git config user.email "CircleCI@virtualthoughts.co.uk"
           git config user.name "CircleCI"
@@ -51,8 +51,7 @@ jobs:
           git commit -m "Update via CircleCI"
           # Push quietly to prevent showing the token in log
           git push -q https://$GITHUB_PERSONAL_TOKEN@github.com/David-VTUK/CircleCI-Webapp-CD.git master
-
-
+          
 workflows:
   version: 2
   Test-Build-Publish:
