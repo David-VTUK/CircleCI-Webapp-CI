@@ -17,6 +17,7 @@ jobs:
           root: .
           paths:
             - ./webappdemo
+            - ./deployment.yaml
   Publish:
     docker:
       - image: cimg/go:1.13
@@ -26,7 +27,7 @@ jobs:
       - attach_workspace:
           at: /tmp/workspace
       - run: |
-          cp /tmp/workspace/* .
+          cp /tmp/workspace/webappdemo .
           TAG=0.1.$CIRCLE_BUILD_NUM
           docker build -t virtualthoughts/circleci-webappdemo:$TAG .
           echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
@@ -35,8 +36,10 @@ jobs:
     docker:
       - image: cimg/base:2020.06
     steps:
-      - checkout
+      - attach_workspace:
+        at: /tmp/workspace
       - run : |
+            cp /tmp/workspace/deployment.yaml .
             TAG=0.1.$CIRCLE_BUILD_NUM
             sed -i 's/\(circleci-webappdemo\)\(.*\)/\1:$TAG/' ./deployment.yaml
       - run : |
