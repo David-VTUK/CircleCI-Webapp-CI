@@ -39,6 +39,8 @@ jobs:
       - attach_workspace:
           at: /tmp/workspace
       - run : |
+          pwd 
+          ls - laR ~
           TAG=0.1.$CIRCLE_BUILD_NUM
           git clone https://github.com/David-VTUK/CircleCI-Webapp-CD
           cd /CircleCI-Webapp-CD
@@ -51,7 +53,7 @@ jobs:
           git commit -m "Update via CircleCI"
           # Push quietly to prevent showing the token in log
           git push -q https://$GITHUB_PERSONAL_TOKEN@github.com/David-VTUK/CircleCI-Webapp-CD.git master
-          
+
 workflows:
   version: 2
   Test-Build-Publish:
