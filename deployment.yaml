@@ -1,7 +1,13 @@
+apiVersion: v1
+kind: Namespace
+  metadata: 
+    name: webapp-demo
+---
 kind: Service
 apiVersion: v1
 metadata:
   name: webapp-demo
+  namespace: webapp-demo
 spec:
   selector:
     app: webapp-demo
@@ -15,6 +21,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: webapp-demo-deployment
+  namespace: webapp-demo
   labels:
     app: webapp-demo
 spec:
