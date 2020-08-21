@@ -12,7 +12,7 @@ func TestHelloWorld(t *testing.T) {
 
 	helloWorld(response, request)
 	got := response.Body.String()
-	want := "End to end"
+	want := "Test CI Webserver 1"
 
 	if got != want {
 		t.Error("Wanted:", want, "Got:", got)
