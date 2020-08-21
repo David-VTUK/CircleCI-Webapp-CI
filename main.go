@@ -6,7 +6,7 @@ import (
 )
 
 func helloWorld(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Test CI Webserver 2")
+	fmt.Fprintf(w, "Test CI Webserver 3")
 }
 
 func main() {
